@@ -4,14 +4,31 @@
 // #include
 // #include <vector>
 // using namespace std;
-
+class Node {
+  int data;
+  Node *next;
+  
+  friend class LinkedList;
+  
+}
 template <typename T>
 class LinkedList
 {
   private:
+  size_t m_top;
+  vector<T> m_stack; 
+  int t_head;
+  int t_data;
+  Node *head;
   // members here
   public:
-    T front(); // Retorna el elemento al comienzo
+    LinkedList();
+    //contructor 
+    LinkedList::LinkedList() { 
+      t_head = NULL;
+    }
+
+    int T front(); // Retorna el elemento al comienzo
     T back(); // Retorna el elemento al final
     void push_front(T); // Agrega un elemento al comienzo 
     void push_back(T); // Agrega un elemento al final
@@ -27,9 +44,9 @@ class LinkedList
 
 // Comments #2
 template <typename T>
-void LinkedList<T>::front(T &elem)
+int LinkedList<T>::front(T &elem) // Retorna el elemento al comienzo
 {
-
+  return t_head->t_data;
 }
 
 // Comments #3
@@ -39,4 +56,41 @@ T LinkedList<T>::back()
 
 }
 
-#endif
+template <typename T>
+void LinkedList<T>::push_front(T) // Agrega un elemento al comienzo 
+{
+  Node *pnt = new Node;
+  pnt ->data=dt;
+  pnt ->next=head;
+  
+  head =pnt;
+}  
+
+void LinkedList<T>::pop_front() // Remueve el elemento al comienzo
+{
+  if(m_top>0)
+    return m_stack[--m_top];
+  throw out_of_range("This stack is empty."); 
+}else{
+  Node *pnt = head->next;
+  deleate head;
+  
+  head = pnt;
+}
+
+void LinkedList<T>::pop_back() // Remueve el elemento al final
+{
+  while (head != NULL)
+    removeFront();
+}
+
+bool LinkedList<T>::empty() // Retorna si la lista está vacía o no
+{
+  Node *pnt = head;
+  if (pnt == NULL) {
+    cout << "Lista vacia";
+}
+  
+  
+  
+  #endif
